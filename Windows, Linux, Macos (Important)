@@ -1,0 +1,34 @@
+For Windows
+These files/scripts are specifically designed for use on Windows systems:
+
+start_server.bat
+
+Script to start the OpenVPN server on Windows.
+server.ovpn
+
+Configuration file for OpenVPN (shared across platforms).
+Files in the keys/ folder
+
+Used for all platforms but must be present for the Windows OpenVPN server.
+For macOS/Linux
+These files/scripts are designed for macOS and Linux systems:
+
+start_server.sh
+
+Bash script to start the OpenVPN server on macOS/Linux.
+server.ovpn
+
+Configuration file for OpenVPN (shared across platforms).
+Files in the keys/ folder
+
+Used for all platforms but must be present for the macOS/Linux OpenVPN server.
+Shared Files (Used Across All Platforms)
+server.ovpn
+
+The OpenVPN configuration file works the same way on all platforms.
+keys/ Folder Contents
+
+server.key: Server's private key.
+server.crt: Server's certificate.
+ca.crt: Certificate Authority (CA) public certificate.
+dh.pem: Diffie-Hellman parameters.

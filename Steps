@@ -1,0 +1,79 @@
+1. Prepare Your USB Drive
+Format the USB Drive:
+
+On Windows: Right-click the drive in File Explorer, select Format, and choose FAT32 or NTFS.
+On macOS: Use Disk Utility to format the drive as FAT32 or ExFAT.
+On Linux: Use gparted or the mkfs command.
+Download the Repository Files:
+
+Clone or download the repository files from GitHub and extract them to the USB drive.
+2. Install Necessary Software
+Make sure the computer you’ll use has the required VPN software.
+
+Install OpenVPN or WireGuard:
+On Windows: Download and install OpenVPN or WireGuard.
+On Linux: Use your package manager:
+bash
+Copy code
+sudo apt update && sudo apt install openvpn
+On macOS: Install via Homebrew:
+bash
+Copy code
+brew install openvpn
+3. Configure the VPN Server
+Set Up Keys and Certificates:
+
+Generate server certificates and keys using OpenVPN’s EasyRSA or WireGuard tools.
+Place them in a keys/ folder on the USB drive.
+Example structure:
+perl
+Copy code
+USB/
+├── start_server.bat
+├── start_server.sh
+├── server.ovpn
+├── keys/
+│   ├── server.key
+│   ├── server.crt
+│   ├── ca.crt
+│   └── dh.pem
+Edit the Configuration Files:
+
+Open the server.ovpn file and update the settings:
+Server IP/Port: Replace 0.0.0.0 with your server’s public IP and specify a port.
+Path to Keys: Ensure paths in the config point to the keys in the keys/ folder.
+4. Deploy the Server
+Windows:
+
+Double-click start_server.bat on the USB. This runs a script to start the OpenVPN server.
+Ensure the VPN server shows a confirmation message like "Server Started Successfully."
+Linux/macOS:
+
+Open the terminal, navigate to the USB directory, and run:
+bash
+Copy code
+./start_server.sh
+Ensure proper permissions are set:
+bash
+Copy code
+chmod +x start_server.sh
+5. Client Configuration
+Generate Client Config Files:
+
+Create .ovpn files for clients to connect to your VPN server.
+Include your server’s public IP address and the client’s private keys.
+Distribute Client Files:
+
+Share the .ovpn file with devices that will connect to the VPN.
+Connect to the VPN:
+
+Import the .ovpn file in the OpenVPN client or WireGuard client on the device.
+6. Test the Setup
+Server Test:
+
+Ensure the server runs and listens on the designated port.
+Use a tool like netstat or nmap to confirm.
+Client Test:
+
+Connect using the .ovpn file from a remote location.
+Verify internet traffic routes through the VPN server.

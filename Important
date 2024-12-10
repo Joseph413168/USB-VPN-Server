@@ -1,0 +1,18 @@
+Warning
+For security reasons, every user will need to generate their own keys and certificates for their VPN server. Sharing private keys (like server.key) and certificates (like server.crt or ca.crt) publicly is a major security risk because:
+
+Private Key Confidentiality: If someone else has your server.key, they can impersonate your server.
+Certificate Authority (CA): Sharing the ca.crt and its private key allows others to issue fake certificates, compromising your security.
+For key generation
+Install EasyRSA: Download it from the EasyRSA GitHub repository.
+
+Generate Certificates: Use the following commands:
+
+bash
+Copy code
+./easyrsa init-pki
+./easyrsa build-ca
+./easyrsa gen-req server nopass
+./easyrsa sign-req server server
+./easyrsa gen-dh
+Copy the generated files to the keys/ folder on your USB.
